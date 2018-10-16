@@ -16,6 +16,10 @@ public class RationalNumber extends RealNumber {
   }
   public boolean isGreater(double nums) {
     //compares the ratio of the rationalNumber to another getNumber
+    return true;
+  }
+  public double isGreater(double nums) {
+    //compares the ratio of the rational number to another getNumber
     return .1;
   }
   public void setNum() {
