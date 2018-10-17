@@ -5,14 +5,15 @@ public class RationalNumber extends RealNumber
 
 
   public RationalNumber(int nume, int deno){
-    super(nume/deno);//this value is ignored!
+    super(0);//this value is ignored!
     if (deno == 0) {numerator = 0; denominator = 1;}
     numerator = nume;
     denominator = deno;
+    reduce();
   }
 
   public double getValue(){
-    return (numerator * 1.0 / denominator);
+    return (double)numerator / denominator;
   }
 
   /**
@@ -38,7 +39,6 @@ public class RationalNumber extends RealNumber
   *@return true when the RationalNumbers have the same numerators and denominators, false otherwise.
   */
   public boolean equals(RationalNumber other){
-    other.reduce();
     if (other.numerator == numerator && other.denominator == denominator) {
       return true;
     }
@@ -50,7 +50,8 @@ public class RationalNumber extends RealNumber
   public String toString(){
     reduce();
     if (numerator == 0) { return "0"; }
-    if (denominator == 1) {return "" + numerator;}
+    if (denominator == 1) {return toString(numerator);}
+    if (numerator < 0 || denominator < 0) {return "-" + Math.abs(numerator) + "/" + Math.abs(denominator);}
     return numerator + "/" + denominator;
   }
   /**Calculate the GCD of two integers.
@@ -60,9 +61,9 @@ public class RationalNumber extends RealNumber
   */
   private static int gcd(int a, int b){
     /*use euclids method or a better one*/
-    if (b > a) {
-      int originalA = a;
-      a = b;
+    if (Math.abs(b) > Math.abs(a)) {
+      int originalA = Math.abs(a);
+      a = Math.abs(b);
       b = originalA;
     }
     if (b == 0) {
@@ -72,8 +73,8 @@ public class RationalNumber extends RealNumber
       return b;
     }
     while (a%b!=0) {
-        int originalB = b;
-        b = a%b;
+        int originalB = Math.abs(b);
+        b = Math.abs(a)%Math.abs(b);
         a = originalB;
         if (b == 0) {return a;}
       }
