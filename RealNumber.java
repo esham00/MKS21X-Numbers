@@ -4,7 +4,6 @@ public class RealNumber{
   public RealNumber(double v){
     value = v;
   }
-
   /*
   *Return the sum of this and the other
   */
@@ -32,7 +31,7 @@ public class RealNumber{
 
 
   public double getValue(){
-    return value;
+    return value/1;
   }
 
   public String toString(){
