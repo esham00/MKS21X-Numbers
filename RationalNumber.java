@@ -33,6 +33,7 @@ public class RationalNumber extends RealNumber
   *and denominator as this RationalNumber but reversed.
   */
   public RationalNumber reciprocal(){
+    if (numerator == 0) {return new RationalNumber(0,0);}
     return new RationalNumber(denominator, numerator);
   }
   /**
@@ -48,10 +49,8 @@ public class RationalNumber extends RealNumber
   *@return the value expressed as "3/4" or "8/3"
   */
   public String toString(){
-    reduce();
-    if (numerator == 0) { return "0"; }
-    if (denominator == 1) {return toString(numerator);}
-    if (numerator < 0 || denominator < 0) {return "-" + Math.abs(numerator) + "/" + Math.abs(denominator);}
+    if (denominator == 1 || numerator == 0) {return "" + numerator;}
+    if (denominator < 0 || numerator < 0) {return "-" + Math.abs(numerator) + "/" + Math.abs(denominator);}
     return numerator + "/" + denominator;
   }
   /**Calculate the GCD of two integers.
@@ -72,11 +71,10 @@ public class RationalNumber extends RealNumber
     if (a % b == 0) {
       return b;
     }
-    while (a%b!=0) {
+    while (b!=0) {
         int originalB = Math.abs(b);
-        b = Math.abs(a)%Math.abs(b);
+        b = (Math.abs(a))%(Math.abs(b));
         a = originalB;
-        if (b == 0) {return a;}
       }
     return a;
   }
@@ -86,9 +84,13 @@ public class RationalNumber extends RealNumber
   *reduced after construction.
   */
   private void reduce(){
-     int unalteredNum = numerator;
-     numerator = numerator / RationalNumber.gcd(numerator, denominator);
-     denominator = (denominator / RationalNumber.gcd(unalteredNum, denominator));
+     int gcf = RationalNumber.gcd(numerator, denominator);
+     numerator = numerator / gcf;
+     denominator = denominator / gcf;
+     if (numerator < 0 && denominator < 0) {
+       numerator *= -1;
+       denominator *= -1;
+     }
   }
   /******************Operations!!!!****************/
   /**
@@ -97,6 +99,10 @@ public class RationalNumber extends RealNumber
   public RationalNumber multiply(RationalNumber other){
     int newNum = (numerator * other.getNumerator());
     int newDen = (denominator * other.getDenominator());
+    if (newNum < 0 && newDen < 0) {
+      newNum *= -1;
+      newDen *= -1;
+    }
     return new RationalNumber(newNum, newDen);
   }
 
@@ -106,6 +112,10 @@ public class RationalNumber extends RealNumber
   public RationalNumber divide(RationalNumber other){
     int newNum = (numerator * other.getDenominator());
     int newDen = (denominator * other.getNumerator());
+    if (newNum < 0 && newDen < 0) {
+      newNum *= -1;
+      newDen *= -1;
+    }
     return new RationalNumber(newNum, newDen);
   }
 
@@ -124,6 +134,10 @@ public class RationalNumber extends RealNumber
   public RationalNumber subtract(RationalNumber other){
     int newNum = (numerator * other.getDenominator()) - (other.getNumerator() * denominator);
     int newDen = (denominator * other.getDenominator());
+    if (newNum < 0 && newDen < 0) {
+      newNum *= -1;
+      newDen *= -1;
+    }
     RationalNumber brandNew = new RationalNumber(newNum, newDen);
     return brandNew;
     }
