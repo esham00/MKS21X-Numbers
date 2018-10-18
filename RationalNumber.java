@@ -99,10 +99,6 @@ public class RationalNumber extends RealNumber
   public RationalNumber multiply(RationalNumber other){
     int newNum = (numerator * other.getNumerator());
     int newDen = (denominator * other.getDenominator());
-    if (newNum < 0 && newDen < 0) {
-      newNum *= -1;
-      newDen *= -1;
-    }
     return new RationalNumber(newNum, newDen);
   }
 
@@ -112,10 +108,6 @@ public class RationalNumber extends RealNumber
   public RationalNumber divide(RationalNumber other){
     int newNum = (numerator * other.getDenominator());
     int newDen = (denominator * other.getNumerator());
-    if (newNum < 0 && newDen < 0) {
-      newNum *= -1;
-      newDen *= -1;
-    }
     return new RationalNumber(newNum, newDen);
   }
 
@@ -134,10 +126,6 @@ public class RationalNumber extends RealNumber
   public RationalNumber subtract(RationalNumber other){
     int newNum = (numerator * other.getDenominator()) - (other.getNumerator() * denominator);
     int newDen = (denominator * other.getDenominator());
-    if (newNum < 0 && newDen < 0) {
-      newNum *= -1;
-      newDen *= -1;
-    }
     RationalNumber brandNew = new RationalNumber(newNum, newDen);
     return brandNew;
     }
