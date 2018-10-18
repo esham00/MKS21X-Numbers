@@ -10,9 +10,13 @@ public class MyDriver {
   System.out.println(second + "(1)");
   System.out.println(third + "(-.5)");
   System.out.println(third.add(second) + "(.5)");
+  System.out.println(first.add(third) + " (0)");
   System.out.println(zero.multiply(first) + "(0)");
+  System.out.println(first.multiply(third) + " (-.25)");
   System.out.println(zero.subtract(second) + "(-1.0)");
+  System.out.println(first.subtract(third) + " (1)");
   System.out.println(third.divide(second) + "(-.5)");
+  System.out.println(first.divide(third) + " (-1)");
   System.out.println("Rational Numbers");
   RationalNumber fourth = new RationalNumber(1,2);
   RationalNumber fifth = new RationalNumber(1,-2);
