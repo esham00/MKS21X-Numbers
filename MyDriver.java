@@ -60,7 +60,7 @@ public class MyDriver {
   System.out.println(eighth.add(sixth) + " (-3/4)");
   System.out.println(tenth.add(tenth) + " (-7/5)");
   System.out.println(eighth.add(ninth) + " (5)");
-  System.out.println(ninth.add(tenth) + " (-43/10)");
+  System.out.println(ninth.add(tenth) + " (43/10)");
   System.out.println(tenth.add(fifth) + " (-6/5)\nTesting subtract");
   System.out.println(fifth.subtract(seventh) + " (-1)");
   System.out.println(sixth.subtract(fifth) + " (-1/4)");
@@ -68,7 +68,13 @@ public class MyDriver {
   System.out.println(tenth.subtract(tenth) + " (0)");
   System.out.println(eighth.subtract(ninth) + " (-5)");
   System.out.println(ninth.subtract(tenth) + " (57/10)");
-  System.out.println(tenth.subtract(fifth) + " (-1/5)");
-
+  System.out.println(tenth.subtract(fifth) + " (-1/5)\nTesting getValue override");
+  System.out.println(fourth.getValue() + " (0.5)");
+  System.out.println(fifth.getValue() + " (-0.5)");
+  System.out.println(sixth.getValue() + " (-0.75)");
+  System.out.println(seventh.getValue() + " (0.5)");
+  System.out.println(eighth.getValue() + " (0.0)");
+  System.out.println(ninth.getValue() + " (5.0)");
+  System.out.println(tenth.getValue() + " (-0.7)");
   }
 }
